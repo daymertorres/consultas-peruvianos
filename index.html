@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Consulta datos de DNI peruano de forma rápida y segura. Ingresa un número de DNI de 8 dígitos y obtén el nombre completo asociado.">
+    <meta name="keywords" content="DNI, Perú, consulta, RENIEC, documento de identidad">
+    <meta name="author" content="Consulta DNI Perú">
+    <meta name="theme-color" content="#0a0a0f">
+    
+    <title>Consulta DNI Perú | Buscar datos por DNI</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🇵🇪</text></svg>">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="bg-gradient"></div>
+        <div class="bg-grid"></div>
+        <div class="bg-glow bg-glow--1"></div>
+        <div class="bg-glow bg-glow--2"></div>
+        <div class="bg-glow bg-glow--3"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header__logo">
+            <div class="header__icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="4" width="20" height="16" rx="2"/>
+                    <circle cx="8" cy="11" r="2"/>
+                    <path d="M14 10h4"/>
+                    <path d="M14 14h4"/>
+                    <path d="M6 16c0-1.5 1-2.5 2-2.5s2 1 2 2.5"/>
+                </svg>
+            </div>
+            <span class="header__title">Consulta DNI</span>
+            <span class="header__badge">PERÚ</span>
+        </div>
+        <nav class="header__nav">
+            <a href="https://github.com" target="_blank" rel="noopener" class="header__link" aria-label="GitHub">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+            </a>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero__badge">
+                <span class="hero__badge-dot"></span>
+                Sistema de Consulta en Línea
+            </div>
+            <h1 class="hero__title">
+                Consulta tu
+                <span class="hero__title-gradient">DNI Peruano</span>
+            </h1>
+            <p class="hero__subtitle">
+                Ingresa un número de DNI de 8 dígitos para obtener los datos asociados de forma rápida y segura.
+            </p>
+        </section>
+
+        <!-- Search Card -->
+        <section class="search-card" id="search-section">
+            <div class="search-card__inner">
+                <form class="search-form" id="dni-form" autocomplete="off">
+                    <div class="search-form__input-wrapper">
+                        <div class="search-form__icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="11" cy="11" r="8"/>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                            </svg>
+                        </div>
+                        <input 
+                            type="text" 
+                            id="dni-input" 
+                            class="search-form__input" 
+                            placeholder="Ingresa el DNI (8 dígitos)"
+                            maxlength="8"
+                            inputmode="numeric"
+                            pattern="[0-9]{8}"
+                            required
+                            aria-label="Número de DNI"
+                        >
+                        <div class="search-form__counter">
+                            <span id="char-count">0</span>/8
+                        </div>
+                    </div>
+                    <button type="submit" class="search-form__button" id="search-btn">
+                        <span class="search-form__button-text">Consultar</span>
+                        <span class="search-form__button-loader" id="btn-loader">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+                            </svg>
+                        </span>
+                    </button>
+                </form>
+
+                <!-- Error Message -->
+                <div class="search-card__error" id="error-msg" role="alert" aria-live="polite">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="15" y1="9" x2="9" y2="15"/>
+                        <line x1="9" y1="9" x2="15" y2="15"/>
+                    </svg>
+                    <span id="error-text"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results Card -->
+        <section class="results-card" id="results-card" aria-live="polite">
+            <div class="results-card__inner">
+                <div class="results-card__header">
+                    <div class="results-card__icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                            <circle cx="12" cy="7" r="4"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h2 class="results-card__title">Resultado de Consulta</h2>
+                        <p class="results-card__dni-label">DNI: <span id="result-dni" class="results-card__dni-value"></span></p>
+                    </div>
+                    <button class="results-card__close" id="close-results" aria-label="Cerrar resultados">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="18" y1="6" x2="6" y2="18"/>
+                            <line x1="6" y1="6" x2="18" y2="18"/>
+                        </svg>
+                    </button>
+                </div>
+                
+                <div class="results-card__body">
+                    <div class="results-card__field">
+                        <span class="results-card__field-label">Nombres Completos</span>
+                        <span class="results-card__field-value" id="result-nombre"></span>
+                    </div>
+                </div>
+
+                <div class="results-card__footer">
+                    <button class="results-card__copy" id="copy-btn" aria-label="Copiar resultado">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                        </svg>
+                        <span id="copy-text">Copiar</span>
+                    </button>
+                    <span class="results-card__timestamp" id="result-time"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- History Section -->
+        <section class="history" id="history-section">
+            <div class="history__header">
+                <h2 class="history__title">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                    Historial de Consultas
+                </h2>
+                <button class="history__clear" id="clear-history">Limpiar</button>
+            </div>
+            <div class="history__list" id="history-list">
+                <!-- Items generated by JS -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p class="footer__text">
+            Hecho con <span class="footer__heart">❤</span> para Perú 🇵🇪
+        </p>
+        <p class="footer__disclaimer">
+            Esta herramienta es solo con fines informativos. Los datos provienen de fuentes públicas.
+        </p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
+</body>
+</html>
